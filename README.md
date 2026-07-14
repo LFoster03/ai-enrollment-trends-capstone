@@ -350,3 +350,73 @@ useful supporting evidence for the project's central hypothesis, not
 just a mismatched data source -- the shift shows up first in current
 enrollment/declaration behavior, and would only be expected to show up
 in completions data several years later.
+
+## Building the Final Comparison Tables
+
+### Overview
+
+`scripts/build_comparison_table.py` is the final step in the data
+pipeline. It combines the cleaned outputs from all three sources into
+two analysis-ready comparison files:
+
+- **`comparison_ISU_vs_National_enrollment.csv`** -- ISU and national
+  (NSC) enrollment for Computer Science and Engineering, aligned by
+  year, with both raw headcounts and values indexed to Fall 2019 = 100
+  for each category. Indexing lets ISU's trend be visually compared
+  against the national trend on the same scale, regardless of the
+  underlying difference in size between a single university and the
+  national total.
+- **`comparison_CERP_completions.csv`** -- CERP's national Bachelor's
+  degree completions data (2011-2024), similarly indexed to 2019 = 100.
+
+**CERP completions are intentionally kept in a separate file from the
+ISU/NSC enrollment comparison.** As noted in the CERP section above,
+completions and enrollment measure different things on different time
+axes (calendar year vs. Fall semester), so merging them into one table
+would imply a direct comparability that doesn't actually hold.
+
+### Usage
+
+```powershell
+python scripts\build_comparison_table.py
+```
+
+Run this after all three individual cleaning pipelines (ISU, NSC,
+CERP) have produced their combined output files in `data/cleaned/`.
+No arguments needed -- it reads `ISU_combined_broad.csv`,
+`NSC_national_combined.csv`, and `CERP_completions_combined.csv`
+automatically.
+
+### Bugs found and fixed while building this script
+
+**1. `.str.extract()` with one capture group returns a DataFrame, not
+a Series.** The script needed to pull just the "Engineering" or
+"Computer Science" prefix out of ISU's longer category labels (e.g.
+`"Computer Science (broad, B.A.+B.S. summed)"`). The first version
+assigned the result of `.str.extract(pattern)` directly to a column,
+which silently produced an entire column of `NaN` rather than raising
+an error, because `.str.extract()` returns a one-column DataFrame by
+default, and pandas can't cleanly assign a DataFrame to a single
+column. **Fix:** added `expand=False` to `.str.extract()`, which
+returns a proper Series when there's exactly one capture group.
+
+**2. Indexing silently anchored to the wrong baseline year for CERP.**
+The first version of `add_indexed_columns()` indexed each category to
+whichever row happened to be *first* in the data (`.iloc[0]`), rather
+than a specific named year. This worked by coincidence for ISU and NSC
+data, since Fall 2019 is the first year in both of those datasets --
+but CERP's completions data starts in 2011, so "the first row" and
+"the 2019 row" are not the same thing. The bug produced a column
+labeled `_indexed_2019` that was actually indexed to 2011, which would
+have been a subtle, easy-to-miss error in any chart or analysis built
+on top of it. **Fix:** `add_indexed_columns()` now explicitly anchors
+to a named `base_year` parameter (2019 by default) for every dataset,
+regardless of which year happens to appear first in that particular
+source's data.
+
+Both bugs were caught by testing the script against the project's
+actual real cleaned data (not just synthetic test fixtures) before
+relying on its output -- a reminder that even a working, verified
+script from one source (ISU/NSC) can silently produce wrong results
+when reused on a source with a different underlying shape (CERP's
+longer, non-2019-starting time range).
