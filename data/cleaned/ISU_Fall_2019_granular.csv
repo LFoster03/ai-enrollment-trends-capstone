@@ -1,9 +1,8 @@
-Program,Matched_Category,Tier,Semester,Headcount
-Civil Engineering,Civil Engineering,Control Group,Fall 2019,633
-Computer Engineering,Computer Engineering,Primary (AI-adjacent),Fall 2019,696
-Cyber Security Engineering,Cyber Security Engineering,Primary (AI-adjacent),Fall 2019,76
-Electrical Engineering,Electrical Engineering,Primary (AI-adjacent),Fall 2019,539
-Mechanical Engineering,Mechanical Engineering,Control Group,Fall 2019,2000
-Software Engineering,Software Engineering,Primary (AI-adjacent),Fall 2019,416
-Computer Science,Computer Science,Primary (AI-adjacent),Fall 2019,655
-Software Engineering,Software Engineering,Primary (AI-adjacent),Fall 2019,409
+Matched_Category,Tier,Semester,Headcount,Source_Programs
+Civil Engineering,Control Group,Fall 2019,633,Civil Engineering
+Computer Engineering,Primary (AI-adjacent),Fall 2019,696,Computer Engineering
+Computer Science,Primary (AI-adjacent),Fall 2019,655,Computer Science
+Cyber Security Engineering,Primary (AI-adjacent),Fall 2019,76,Cyber Security Engineering
+Electrical Engineering,Primary (AI-adjacent),Fall 2019,539,Electrical Engineering
+Mechanical Engineering,Control Group,Fall 2019,2000,Mechanical Engineering
+Software Engineering,Primary (AI-adjacent),Fall 2019,825,Software Engineering

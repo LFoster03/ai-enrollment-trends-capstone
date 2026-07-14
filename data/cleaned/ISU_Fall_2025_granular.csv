@@ -1,9 +1,8 @@
-Program,Matched_Category,Tier,Semester,Headcount
-"Civil Engineering, B.S.",Civil Engineering,Control Group,Fall 2025,592
-"Computer Engineering, B.S.",Computer Engineering,Primary (AI-adjacent),Fall 2025,473
-"Cyber Security Engineering, B.S.",Cyber Security Engineering,Primary (AI-adjacent),Fall 2025,165
-"Electrical Engineering, B.S.",Electrical Engineering,Primary (AI-adjacent),Fall 2025,523
-"Mechanical Engineering, B.S.",Mechanical Engineering,Control Group,Fall 2025,2123
-"Software Engineering, B.S.",Software Engineering,Primary (AI-adjacent),Fall 2025,566
-"Computer Science, B.A.",Computer Science,Primary (AI-adjacent),Fall 2025,34
-"Computer Science, B.S.",Computer Science,Primary (AI-adjacent),Fall 2025,712
+Matched_Category,Tier,Semester,Headcount,Source_Programs
+Civil Engineering,Control Group,Fall 2025,592,"Civil Engineering, B.S."
+Computer Engineering,Primary (AI-adjacent),Fall 2025,473,"Computer Engineering, B.S."
+Computer Science,Primary (AI-adjacent),Fall 2025,746,"Computer Science, B.A.; Computer Science, B.S."
+Cyber Security Engineering,Primary (AI-adjacent),Fall 2025,165,"Cyber Security Engineering, B.S."
+Electrical Engineering,Primary (AI-adjacent),Fall 2025,523,"Electrical Engineering, B.S."
+Mechanical Engineering,Control Group,Fall 2025,2123,"Mechanical Engineering, B.S."
+Software Engineering,Primary (AI-adjacent),Fall 2025,566,"Software Engineering, B.S."

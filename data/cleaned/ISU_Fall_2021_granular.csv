@@ -1,9 +1,8 @@
-Program,Matched_Category,Tier,Semester,Headcount
-Civil Engineering,Civil Engineering,Control Group,Fall 2021,525
-Computer Engineering,Computer Engineering,Primary (AI-adjacent),Fall 2021,481
-Cyber Security Engineering,Cyber Security Engineering,Primary (AI-adjacent),Fall 2021,161
-Electrical Engineering,Electrical Engineering,Primary (AI-adjacent),Fall 2021,495
-Mechanical Engineering,Mechanical Engineering,Control Group,Fall 2021,1718
-Software Engineering,Software Engineering,Primary (AI-adjacent),Fall 2021,340
-Computer Science,Computer Science,Primary (AI-adjacent),Fall 2021,722
-Software Engineering,Software Engineering,Primary (AI-adjacent),Fall 2021,340
+Matched_Category,Tier,Semester,Headcount,Source_Programs
+Civil Engineering,Control Group,Fall 2021,525,Civil Engineering
+Computer Engineering,Primary (AI-adjacent),Fall 2021,481,Computer Engineering
+Computer Science,Primary (AI-adjacent),Fall 2021,722,Computer Science
+Cyber Security Engineering,Primary (AI-adjacent),Fall 2021,161,Cyber Security Engineering
+Electrical Engineering,Primary (AI-adjacent),Fall 2021,495,Electrical Engineering
+Mechanical Engineering,Control Group,Fall 2021,1718,Mechanical Engineering
+Software Engineering,Primary (AI-adjacent),Fall 2021,680,Software Engineering

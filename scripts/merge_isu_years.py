@@ -42,7 +42,11 @@ def sort_key(semester_label: str) -> int:
 
 
 def merge_granular():
-    files = sorted(glob.glob(os.path.join(CLEANED_DIR, "ISU_*_granular.csv")))
+    all_matches = glob.glob(os.path.join(CLEANED_DIR, "ISU_*_granular.csv"))
+    # Exclude this script's own output file, so re-running the merge
+    # never picks up a previously-combined file as an input (which
+    # would double every row).
+    files = sorted(f for f in all_matches if "combined" not in os.path.basename(f).lower())
     if not files:
         log_event("No granular CSVs found in data/cleaned/. Nothing to merge.", level="WARNING")
         return None
@@ -60,7 +64,8 @@ def merge_granular():
 
 
 def merge_broad():
-    files = sorted(glob.glob(os.path.join(CLEANED_DIR, "ISU_*_broad.csv")))
+    all_matches = glob.glob(os.path.join(CLEANED_DIR, "ISU_*_broad.csv"))
+    files = sorted(f for f in all_matches if "combined" not in os.path.basename(f).lower())
     if not files:
         log_event("No broad CSVs found in data/cleaned/. Nothing to merge.", level="WARNING")
         return None

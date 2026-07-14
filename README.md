@@ -99,3 +99,91 @@ required — just run the cleaning script as usual.
   observation (Software Engineering, Computer Science, Electrical
   Engineering, Cybersecurity), since it sits at the intersection of the
   project's hypothesis and was judged worth tracking as a secondary line.
+
+## Merging Semesters into One Time Series
+
+`scripts/merge_isu_years.py` combines every per-semester file in
+`data/cleaned/` into two continuous time-series files:
+
+- **`ISU_combined_granular.csv`** — one row per (major, semester),
+  sorted chronologically Fall 2019 → Fall 2025.
+- **`ISU_combined_broad.csv`** — the Engineering and Computer Science
+  broad totals, one row per category per semester, for comparison
+  against the national NSC/CERP data.
+
+### Usage
+
+```powershell
+python scripts\merge_isu_years.py
+```
+
+Run this after `clean_isu_enrollment.py` has been run for every target
+semester. It can be safely re-run at any time (e.g. after re-cleaning a
+corrected file) — see the self-referencing glob fix below for why this
+wasn't always true.
+
+## Data Quality Issues Found During Testing
+
+The first pass at cleaning surfaced three real data-quality problems.
+Each is documented here since the underlying causes (ISU's report
+formatting quirks) could resurface in future semesters and are worth
+knowing about rather than re-discovering from scratch.
+
+### 1. Non-primary-major rows were being counted
+
+The initial matching logic used a simple "does this program name
+contain the target text" check. This correctly matched real programs,
+but also matched rows like `Computer Science (BS) Undergraduate
+Additional Major`. An "Additional Major" row represents a student whose
+*primary* major is something else, who is already counted once
+elsewhere in the file — including this row would double-count that
+student under a category they aren't actually majoring in.
+
+**Fix:** `tier_for()` now excludes any row containing "additional
+major," "pre-major," "non-degree," or "undeclared," so only students'
+primary declared major is counted.
+
+### 2. Re-running the merge script doubled every row
+
+`merge_isu_years.py` searches for files matching the pattern
+`ISU_*_granular.csv`. That wildcard also matches the script's *own*
+output file, `ISU_combined_granular.csv`. Running the merge a second
+time (e.g. after re-cleaning a corrected semester) would pick up the
+previous combined file — which already contained one full copy of
+every semester — as an additional input, doubling every row.
+
+**Fix:** the glob match now explicitly excludes any filename containing
+"combined," so the script never treats its own prior output as a new
+input.
+
+### 3. Software Engineering is a joint program, listed under two colleges
+
+In Fall 2019–2021 files, "Software Engineering" appeared as **two**
+separate rows with different headcounts (e.g. 416 and 409 in Fall
+2019) — one nested under the Engineering college block, one nested
+under Liberal Arts and Sciences. This is not duplicate data: Iowa
+State's Software Engineering B.S. is a joint program between the
+College of Engineering and the College of Liberal Arts and Sciences,
+so students are administratively split across both colleges in the
+Registrar's own report, even though they share one major. (Reports
+from Fall 2022 onward list Software Engineering under a single college
+only, suggesting ISU changed how this joint listing is reported partway
+through the project's date range — worth keeping in mind when
+interpreting the Software Engineering trend line, since pre- and
+post-2022 figures may not be perfectly like-for-like.)
+
+**Fix:** `clean_isu_file()` now groups all matched rows by category,
+tier, and semester, and **sums** their headcounts into a single row,
+rather than leaving same-category rows split across multiple lines. A
+`Source_Programs` column records exactly which raw program name(s)
+contributed to each summed total, so the aggregation is fully
+traceable back to the source data.
+
+### Verified output
+
+After all three fixes, `ISU_combined_granular.csv` contains exactly 49
+rows — 7 tracked categories (Computer Science, Software Engineering,
+Electrical Engineering, Computer Engineering, Cyber Security
+Engineering, Mechanical Engineering, Civil Engineering) × 7 Fall
+semesters (2019–2025) — with no duplicate rows and no non-primary-major
+contamination.

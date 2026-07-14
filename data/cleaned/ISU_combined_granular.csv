@@ -1,110 +1,50 @@
-Program,Matched_Category,Tier,Semester,Headcount
-Civil Engineering,Civil Engineering,Control Group,Fall 2019,633
-Civil Engineering,Civil Engineering,Control Group,Fall 2019,633
-Mechanical Engineering,Mechanical Engineering,Control Group,Fall 2019,2000
-Mechanical Engineering,Mechanical Engineering,Control Group,Fall 2019,2000
-Computer Engineering,Computer Engineering,Primary (AI-adjacent),Fall 2019,696
-Computer Engineering,Computer Engineering,Primary (AI-adjacent),Fall 2019,696
-Computer Science,Computer Science,Primary (AI-adjacent),Fall 2019,655
-Computer Science,Computer Science,Primary (AI-adjacent),Fall 2019,655
-Cyber Security Engineering,Cyber Security Engineering,Primary (AI-adjacent),Fall 2019,76
-Cyber Security Engineering,Cyber Security Engineering,Primary (AI-adjacent),Fall 2019,76
-Electrical Engineering,Electrical Engineering,Primary (AI-adjacent),Fall 2019,539
-Electrical Engineering,Electrical Engineering,Primary (AI-adjacent),Fall 2019,539
-Software Engineering,Software Engineering,Primary (AI-adjacent),Fall 2019,416
-Software Engineering,Software Engineering,Primary (AI-adjacent),Fall 2019,409
-Software Engineering,Software Engineering,Primary (AI-adjacent),Fall 2019,416
-Software Engineering,Software Engineering,Primary (AI-adjacent),Fall 2019,409
-Civil Engineering,Civil Engineering,Control Group,Fall 2020,567
-Civil Engineering,Civil Engineering,Control Group,Fall 2020,567
-Mechanical Engineering,Mechanical Engineering,Control Group,Fall 2020,1851
-Mechanical Engineering,Mechanical Engineering,Control Group,Fall 2020,1851
-Computer Engineering,Computer Engineering,Primary (AI-adjacent),Fall 2020,565
-Computer Engineering,Computer Engineering,Primary (AI-adjacent),Fall 2020,565
-Computer Science,Computer Science,Primary (AI-adjacent),Fall 2020,665
-Computer Science,Computer Science,Primary (AI-adjacent),Fall 2020,665
-Cyber Security Engineering,Cyber Security Engineering,Primary (AI-adjacent),Fall 2020,119
-Cyber Security Engineering,Cyber Security Engineering,Primary (AI-adjacent),Fall 2020,119
-Electrical Engineering,Electrical Engineering,Primary (AI-adjacent),Fall 2020,512
-Electrical Engineering,Electrical Engineering,Primary (AI-adjacent),Fall 2020,512
-Software Engineering,Software Engineering,Primary (AI-adjacent),Fall 2020,393
-Software Engineering,Software Engineering,Primary (AI-adjacent),Fall 2020,391
-Software Engineering,Software Engineering,Primary (AI-adjacent),Fall 2020,393
-Software Engineering,Software Engineering,Primary (AI-adjacent),Fall 2020,391
-Civil Engineering,Civil Engineering,Control Group,Fall 2021,525
-Civil Engineering,Civil Engineering,Control Group,Fall 2021,525
-Mechanical Engineering,Mechanical Engineering,Control Group,Fall 2021,1718
-Mechanical Engineering,Mechanical Engineering,Control Group,Fall 2021,1718
-Computer Engineering,Computer Engineering,Primary (AI-adjacent),Fall 2021,481
-Computer Engineering,Computer Engineering,Primary (AI-adjacent),Fall 2021,481
-Computer Science,Computer Science,Primary (AI-adjacent),Fall 2021,722
-Computer Science,Computer Science,Primary (AI-adjacent),Fall 2021,722
-Cyber Security Engineering,Cyber Security Engineering,Primary (AI-adjacent),Fall 2021,161
-Cyber Security Engineering,Cyber Security Engineering,Primary (AI-adjacent),Fall 2021,161
-Electrical Engineering,Electrical Engineering,Primary (AI-adjacent),Fall 2021,495
-Electrical Engineering,Electrical Engineering,Primary (AI-adjacent),Fall 2021,495
-Software Engineering,Software Engineering,Primary (AI-adjacent),Fall 2021,340
-Software Engineering,Software Engineering,Primary (AI-adjacent),Fall 2021,340
-Software Engineering,Software Engineering,Primary (AI-adjacent),Fall 2021,340
-Software Engineering,Software Engineering,Primary (AI-adjacent),Fall 2021,340
-Civil Engineering,Civil Engineering,Control Group,Fall 2022,508
-Civil Engineering,Civil Engineering,Control Group,Fall 2022,508
-Mechanical Engineering,Mechanical Engineering,Control Group,Fall 2022,1657
-Mechanical Engineering,Mechanical Engineering,Control Group,Fall 2022,1657
-Computer Engineering,Computer Engineering,Primary (AI-adjacent),Fall 2022,479
-Computer Engineering,Computer Engineering,Primary (AI-adjacent),Fall 2022,479
-Computer Science,Computer Science,Primary (AI-adjacent),Fall 2022,866
-Computer Science,Computer Science,Primary (AI-adjacent),Fall 2022,866
-Cyber Security Engineering,Cyber Security Engineering,Primary (AI-adjacent),Fall 2022,187
-Cyber Security Engineering,Cyber Security Engineering,Primary (AI-adjacent),Fall 2022,187
-Electrical Engineering,Electrical Engineering,Primary (AI-adjacent),Fall 2022,483
-Electrical Engineering,Electrical Engineering,Primary (AI-adjacent),Fall 2022,483
-Software Engineering,Software Engineering,Primary (AI-adjacent),Fall 2022,661
-Software Engineering,Software Engineering,Primary (AI-adjacent),Fall 2022,661
-Civil Engineering,Civil Engineering,Control Group,Fall 2023,500
-Civil Engineering,Civil Engineering,Control Group,Fall 2023,500
-Mechanical Engineering,Mechanical Engineering,Control Group,Fall 2023,1765
-Mechanical Engineering,Mechanical Engineering,Control Group,Fall 2023,1765
-Computer Engineering,Computer Engineering,Primary (AI-adjacent),Fall 2023,464
-Computer Engineering,Computer Engineering,Primary (AI-adjacent),Fall 2023,464
-Computer Science,Computer Science,Primary (AI-adjacent),Fall 2023,938
-Computer Science,Computer Science,Primary (AI-adjacent),Fall 2023,938
-Cyber Security Engineering,Cyber Security Engineering,Primary (AI-adjacent),Fall 2023,186
-Cyber Security Engineering,Cyber Security Engineering,Primary (AI-adjacent),Fall 2023,186
-Electrical Engineering,Electrical Engineering,Primary (AI-adjacent),Fall 2023,477
-Electrical Engineering,Electrical Engineering,Primary (AI-adjacent),Fall 2023,477
-Software Engineering,Software Engineering,Primary (AI-adjacent),Fall 2023,662
-Software Engineering,Software Engineering,Primary (AI-adjacent),Fall 2023,662
-"Civil Engineering, B.S.",Civil Engineering,Control Group,Fall 2024,518
-"Civil Engineering, B.S.",Civil Engineering,Control Group,Fall 2024,518
-"Mechanical Engineering, B.S.",Mechanical Engineering,Control Group,Fall 2024,1930
-"Mechanical Engineering, B.S.",Mechanical Engineering,Control Group,Fall 2024,1930
-"Computer Engineering, B.S.",Computer Engineering,Primary (AI-adjacent),Fall 2024,488
-"Computer Engineering, B.S.",Computer Engineering,Primary (AI-adjacent),Fall 2024,488
-"Computer Science, B.A.",Computer Science,Primary (AI-adjacent),Fall 2024,24
-"Computer Science, B.S.",Computer Science,Primary (AI-adjacent),Fall 2024,852
-Computer Science (BS) Undergraduate Additional Major,Computer Science,Primary (AI-adjacent),Fall 2024,1
-"Computer Science, B.A.",Computer Science,Primary (AI-adjacent),Fall 2024,24
-"Computer Science, B.S.",Computer Science,Primary (AI-adjacent),Fall 2024,852
-"Cyber Security Engineering, B.S.",Cyber Security Engineering,Primary (AI-adjacent),Fall 2024,170
-"Cyber Security Engineering, B.S.",Cyber Security Engineering,Primary (AI-adjacent),Fall 2024,170
-"Electrical Engineering, B.S.",Electrical Engineering,Primary (AI-adjacent),Fall 2024,475
-"Electrical Engineering, B.S.",Electrical Engineering,Primary (AI-adjacent),Fall 2024,475
-"Software Engineering, B.S.",Software Engineering,Primary (AI-adjacent),Fall 2024,640
-"Software Engineering, B.S.",Software Engineering,Primary (AI-adjacent),Fall 2024,640
-"Civil Engineering, B.S.",Civil Engineering,Control Group,Fall 2025,592
-"Civil Engineering, B.S.",Civil Engineering,Control Group,Fall 2025,592
-"Mechanical Engineering, B.S.",Mechanical Engineering,Control Group,Fall 2025,2123
-"Mechanical Engineering, B.S.",Mechanical Engineering,Control Group,Fall 2025,2123
-"Computer Engineering, B.S.",Computer Engineering,Primary (AI-adjacent),Fall 2025,473
-"Computer Engineering, B.S.",Computer Engineering,Primary (AI-adjacent),Fall 2025,473
-"Computer Science, B.A.",Computer Science,Primary (AI-adjacent),Fall 2025,34
-"Computer Science, B.S.",Computer Science,Primary (AI-adjacent),Fall 2025,712
-"Computer Science, B.A.",Computer Science,Primary (AI-adjacent),Fall 2025,34
-"Computer Science, B.S.",Computer Science,Primary (AI-adjacent),Fall 2025,712
-"Cyber Security Engineering, B.S.",Cyber Security Engineering,Primary (AI-adjacent),Fall 2025,165
-"Cyber Security Engineering, B.S.",Cyber Security Engineering,Primary (AI-adjacent),Fall 2025,165
-"Electrical Engineering, B.S.",Electrical Engineering,Primary (AI-adjacent),Fall 2025,523
-"Electrical Engineering, B.S.",Electrical Engineering,Primary (AI-adjacent),Fall 2025,523
-"Software Engineering, B.S.",Software Engineering,Primary (AI-adjacent),Fall 2025,566
-"Software Engineering, B.S.",Software Engineering,Primary (AI-adjacent),Fall 2025,566
+Matched_Category,Tier,Semester,Headcount,Source_Programs
+Civil Engineering,Control Group,Fall 2019,633,Civil Engineering
+Mechanical Engineering,Control Group,Fall 2019,2000,Mechanical Engineering
+Computer Engineering,Primary (AI-adjacent),Fall 2019,696,Computer Engineering
+Computer Science,Primary (AI-adjacent),Fall 2019,655,Computer Science
+Cyber Security Engineering,Primary (AI-adjacent),Fall 2019,76,Cyber Security Engineering
+Electrical Engineering,Primary (AI-adjacent),Fall 2019,539,Electrical Engineering
+Software Engineering,Primary (AI-adjacent),Fall 2019,825,Software Engineering
+Civil Engineering,Control Group,Fall 2020,567,Civil Engineering
+Mechanical Engineering,Control Group,Fall 2020,1851,Mechanical Engineering
+Computer Engineering,Primary (AI-adjacent),Fall 2020,565,Computer Engineering
+Computer Science,Primary (AI-adjacent),Fall 2020,665,Computer Science
+Cyber Security Engineering,Primary (AI-adjacent),Fall 2020,119,Cyber Security Engineering
+Electrical Engineering,Primary (AI-adjacent),Fall 2020,512,Electrical Engineering
+Software Engineering,Primary (AI-adjacent),Fall 2020,784,Software Engineering
+Civil Engineering,Control Group,Fall 2021,525,Civil Engineering
+Mechanical Engineering,Control Group,Fall 2021,1718,Mechanical Engineering
+Computer Engineering,Primary (AI-adjacent),Fall 2021,481,Computer Engineering
+Computer Science,Primary (AI-adjacent),Fall 2021,722,Computer Science
+Cyber Security Engineering,Primary (AI-adjacent),Fall 2021,161,Cyber Security Engineering
+Electrical Engineering,Primary (AI-adjacent),Fall 2021,495,Electrical Engineering
+Software Engineering,Primary (AI-adjacent),Fall 2021,680,Software Engineering
+Civil Engineering,Control Group,Fall 2022,508,Civil Engineering
+Mechanical Engineering,Control Group,Fall 2022,1657,Mechanical Engineering
+Computer Engineering,Primary (AI-adjacent),Fall 2022,479,Computer Engineering
+Computer Science,Primary (AI-adjacent),Fall 2022,866,Computer Science
+Cyber Security Engineering,Primary (AI-adjacent),Fall 2022,187,Cyber Security Engineering
+Electrical Engineering,Primary (AI-adjacent),Fall 2022,483,Electrical Engineering
+Software Engineering,Primary (AI-adjacent),Fall 2022,661,Software Engineering
+Civil Engineering,Control Group,Fall 2023,500,Civil Engineering
+Mechanical Engineering,Control Group,Fall 2023,1765,Mechanical Engineering
+Computer Engineering,Primary (AI-adjacent),Fall 2023,464,Computer Engineering
+Computer Science,Primary (AI-adjacent),Fall 2023,938,Computer Science
+Cyber Security Engineering,Primary (AI-adjacent),Fall 2023,186,Cyber Security Engineering
+Electrical Engineering,Primary (AI-adjacent),Fall 2023,477,Electrical Engineering
+Software Engineering,Primary (AI-adjacent),Fall 2023,662,Software Engineering
+Civil Engineering,Control Group,Fall 2024,518,"Civil Engineering, B.S."
+Mechanical Engineering,Control Group,Fall 2024,1930,"Mechanical Engineering, B.S."
+Computer Engineering,Primary (AI-adjacent),Fall 2024,488,"Computer Engineering, B.S."
+Computer Science,Primary (AI-adjacent),Fall 2024,876,"Computer Science, B.A.; Computer Science, B.S."
+Cyber Security Engineering,Primary (AI-adjacent),Fall 2024,170,"Cyber Security Engineering, B.S."
+Electrical Engineering,Primary (AI-adjacent),Fall 2024,475,"Electrical Engineering, B.S."
+Software Engineering,Primary (AI-adjacent),Fall 2024,640,"Software Engineering, B.S."
+Civil Engineering,Control Group,Fall 2025,592,"Civil Engineering, B.S."
+Mechanical Engineering,Control Group,Fall 2025,2123,"Mechanical Engineering, B.S."
+Computer Engineering,Primary (AI-adjacent),Fall 2025,473,"Computer Engineering, B.S."
+Computer Science,Primary (AI-adjacent),Fall 2025,746,"Computer Science, B.A.; Computer Science, B.S."
+Cyber Security Engineering,Primary (AI-adjacent),Fall 2025,165,"Cyber Security Engineering, B.S."
+Electrical Engineering,Primary (AI-adjacent),Fall 2025,523,"Electrical Engineering, B.S."
+Software Engineering,Primary (AI-adjacent),Fall 2025,566,"Software Engineering, B.S."

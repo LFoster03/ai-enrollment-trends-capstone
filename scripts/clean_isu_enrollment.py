@@ -168,6 +168,24 @@ def clean_isu_file(filepath: str, semester_label: str, sheet_name: str = "UG"):
 
     granular_df = pd.DataFrame(records)
 
+    if not granular_df.empty:
+        # Some programs are jointly offered across multiple colleges
+        # (e.g. Software Engineering appears once under Engineering
+        # and once under Liberal Arts and Sciences in earlier report
+        # years) and so can appear as more than one row for the same
+        # category in the same semester. Sum these into a single
+        # headcount per category per semester rather than leaving
+        # them as separate, easily-misread rows. The list of distinct
+        # source program name(s) is preserved for transparency.
+        granular_df = (
+            granular_df
+            .groupby(["Matched_Category", "Tier", "Semester"], as_index=False)
+            .agg(
+                Headcount=("Headcount", "sum"),
+                Source_Programs=("Program", lambda p: "; ".join(sorted(set(p)))),
+            )
+        )
+
     broad_totals = pd.DataFrame([
         {
             "Category": "Engineering (broad, college total)",
