@@ -187,3 +187,80 @@ Electrical Engineering, Computer Engineering, Cyber Security
 Engineering, Mechanical Engineering, Civil Engineering) × 7 Fall
 semesters (2019–2025) — with no duplicate rows and no non-primary-major
 contamination.
+
+## NSC National Data Cleaning
+
+### Overview
+
+`scripts/clean_nsc_national.py` cleans the National Student Clearinghouse
+(NSC) Research Center's "Final Fall Enrollment Trends" Data Appendix and
+extracts national undergraduate 4-year enrollment totals for:
+
+- **CIP 11** — Computer and Information Sciences and Support Services
+  (labeled "Computer Science" in this project's output)
+- **CIP 14** — Engineering
+
+These are the two CIP-family categories that line up with this
+project's broad Engineering and Computer Science totals from the ISU
+data, since NSC reports at the CIP-family level rather than by
+individual major.
+
+### Source data
+
+Downloaded from
+[nscresearchcenter.org/final-fall-enrollment-trends](https://nscresearchcenter.org/final-fall-enrollment-trends/),
+saved into `data/raw/`.
+
+**Important:** a single appendix download covers multiple years as
+side-by-side columns, not just the one year in its filename. The Fall
+2025 appendix (`NSC_Fall2025_Appendix.xlsx`), for example, contains
+2020 through 2025 all in one file. Only one appendix file was needed
+for this project as a result, rather than one per year.
+
+### Fall 2019 (no Data Appendix exists for this year)
+
+NSC did not publish a downloadable Data Appendix for Fall 2019 --
+only a narrative PDF report. The Fall 2019 figures used in this
+project (Engineering = 595,142; Computer Science = 474,573) were
+manually extracted from Table 11 (four-year institutions) of that
+report, `CTEE_Report_Fall_2019.pdf`.
+
+This PDF has been saved to `data/raw/` for documentation and
+traceability, so the source of these two hardcoded numbers can be
+independently verified. **The cleaning script does not read this PDF
+directly** -- the two figures are hardcoded as `FALL_2019_MANUAL` at
+the top of `clean_nsc_national.py`, since extracting numbers from PDF
+text programmatically wasn't worth building for two data points. The
+file's presence in `data/raw/` is purely for citation/audit purposes.
+
+### Usage
+
+```powershell
+python scripts\clean_nsc_national.py "data\raw\NSC_Fall2025_Appendix.xlsx"
+```
+
+Output is saved to `data/cleaned/NSC_national_combined.csv`, containing
+one row per (Category, Semester), covering Fall 2019 through Fall 2025
+-- both the six years read from the appendix and the one manually
+entered Fall 2019 year, combined and sorted chronologically in a
+single file.
+
+### Known data quality notes
+
+- Enrollment figures in the appendix are non-integer NSC estimates
+  (their underlying methodology involves extrapolation); the script
+  rounds these to whole numbers for readability.
+- A small number of states have suppressed ("*") values for some
+  CIP/year combinations, presumably due to small underlying counts.
+  These are excluded from the national sum (treated as missing, not
+  zero), so national totals may be very slightly undercounted rather
+  than overcounted.
+- Comparing this appendix's figures against the standalone Fall 2019,
+  2020, and 2021 PDF reports shows minor discrepancies (e.g. Fall 2021
+  Computer Science: 507,492 in the original PDF vs. 513,475 in the
+  Fall 2025 appendix's revised 2021 column). This is expected --
+  NSC revises prior-year estimates in later report vintages -- and is
+  noted here as a limitation rather than an error: the Fall 2019 figure
+  used in this project comes from the original Fall 2019 PDF, while
+  2020-2025 figures come from the most recent (Fall 2025) appendix's
+  revised figures for those years.
