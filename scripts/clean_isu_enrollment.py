@@ -75,6 +75,17 @@ def find_header_row(raw_df: pd.DataFrame) -> int:
 
 
 def tier_for(program_name: str) -> str:
+    # Exclude rows that represent something other than a student's
+    # primary declared major -- these use the same program name text
+    # but refer to a different category of student, and including
+    # them causes double-counting (Additional Major) or mixes in
+    # students who haven't formally declared (Pre-Major) or aren't
+    # degree-seeking (Non-Degree, Undeclared).
+    exclusions = ["additional major", "pre-major", "non-degree", "undeclared"]
+    lowered = program_name.lower()
+    if any(exclusion in lowered for exclusion in exclusions):
+        return None
+
     for target in PRIMARY_PROGRAMS:
         if target.lower() in program_name.lower():
             return "Primary (AI-adjacent)"
