@@ -264,3 +264,89 @@ single file.
   used in this project comes from the original Fall 2019 PDF, while
   2020-2025 figures come from the most recent (Fall 2025) appendix's
   revised figures for those years.
+
+## CERP Completions Data Cleaning
+
+### Overview
+
+`scripts/clean_cerp_completions.py` cleans two CERP (Computing Research
+Association's Center for Evaluating the Research Pipeline) datasets,
+derived from IPEDS, and extracts national Bachelor's-level degree
+**completions** for Computer Science (CIP 11.x) and Engineering
+(CIP 14.x), summed across gender and race/ethnicity.
+
+**This is degree completions data (degrees awarded per year), not
+enrollment.** It measures a fundamentally different thing than the
+ISU and NSC datasets used elsewhere in this project: completions
+reflect students who declared their major years earlier and are now
+graduating, while enrollment reflects current, active student
+headcounts. For this reason, CERP completions data is kept in its own
+separate output file (`CERP_completions_combined.csv`) rather than
+merged into the same time series as the ISU/NSC enrollment data. See
+"Why this matters" below for why this distinction turned out to be
+analytically important, not just a technicality.
+
+### Source data
+
+Two CSVs downloaded from CERP's Data Resources page
+([cra.org/cerp/data-resources-and-reports](https://cra.org/cerp/data-resources-and-reports/)),
+covering 2011-2024:
+
+- `CERP_computing_completions.csv` (originally
+  `IPEDS_nationalAwards_computing_allDemographics_allCIP_2011-2024.csv`)
+- `CERP_engineering_completions.csv` (originally
+  `IPEDS_nationalAwards_engineering_allDemographics_allCIP_2011-2024.csv`)
+
+Both were renamed after download and saved into `data/raw/` for
+consistency with this project's other source files.
+
+### File structure notes
+
+- Each row represents one (Award Level, CIP Code, Gender,
+  Race/Ethnicity) combination, with one column per year (2011-2024)
+  containing the completions count for that combination.
+- **The "computing" file is not limited to Computer Science** -- it
+  includes other related CIP families as well (e.g. CIP 10.x,
+  Communications Technologies/Animation). The script filters
+  specifically to CIP codes starting with `"11."`, to stay consistent
+  with how Computer Science is defined elsewhere in this project
+  (matching NSC's CIP 11 category).
+- `awardLevel` includes multiple degree levels (Associate's,
+  Bachelor's, etc.). The script filters to Bachelor's only, to match
+  this project's focus on undergraduate students.
+- `cipCode` combines the numeric code and a text description in a
+  single field (e.g. `"11.0101 Computer and Information Sciences,
+  General"`); the script matches on the numeric prefix rather than
+  requiring an exact string match, since multiple specific CIP codes
+  fall under each broad family.
+
+### Usage
+
+```powershell
+python scripts\clean_cerp_completions.py "data\raw\CERP_computing_completions.csv" "data\raw\CERP_engineering_completions.csv"
+```
+
+Output is saved to `data/cleaned/CERP_completions_combined.csv`, with
+one row per (Category, Year), covering 2011-2024.
+
+### Why this matters: a completions vs. enrollment divergence
+
+The cleaned CERP data shows Computer Science Bachelor's completions
+growing every year from 2011-2024 with no exceptions (32,588 to
+119,957), while Engineering completions peaked in 2020 (130,282) and
+have declined every year since -- and the two lines cross for the
+first time in 2024, with CS completions (119,957) overtaking
+Engineering (118,009).
+
+This is the **opposite** pattern from what the ISU and NSC enrollment
+data show for the same recent years (where CS enrollment has recently
+plateaued/declined while Engineering has been recovering). This isn't
+a contradiction between sources -- it's consistent with a lagged
+effect: a 2024 CS graduate likely declared that major years earlier
+(around 2020-2021), well before AI-driven career concerns became
+widely discussed, while current enrollment data reflects choices being
+made right now. Comparing completions against enrollment is therefore
+useful supporting evidence for the project's central hypothesis, not
+just a mismatched data source -- the shift shows up first in current
+enrollment/declaration behavior, and would only be expected to show up
+in completions data several years later.
