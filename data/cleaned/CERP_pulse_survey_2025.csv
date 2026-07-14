@@ -1,0 +1,10 @@
+Metric,Value,Notes
+Survey_period,"Aug 27 - Sep 17, 2025",Fall 2025 CERP Undergraduate Enrollment Pulse Survey
+Units_contacted,288,CRA academic member units
+Units_responded,134,leaders at 130 unique institutions
+Response_rate_pct,46.5,
+Pct_units_declining_enrollment,62,AY 2025-2026 vs AY 2024-2025
+Pct_units_steady_enrollment,19,AY 2025-2026 vs AY 2024-2025
+Pct_units_increasing_enrollment,13,AY 2025-2026 vs AY 2024-2025
+Fields_most_likely_declining,"Computer Science; Software Engineering; Information Systems",qualitative finding from survey narrative
+Fields_more_likely_growing,"Computer Engineering; Cybersecurity; Data Science; AI",qualitative finding from survey narrative
