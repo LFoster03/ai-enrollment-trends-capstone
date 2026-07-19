@@ -1,0 +1,15 @@
+Year,Category,ISU,ISU_pct_change,National,National_pct_change
+2019,Computer Science,655,,474573,
+2020,Computer Science,665,1.53,492669,3.81
+2021,Computer Science,722,8.57,513475,4.22
+2022,Computer Science,866,19.94,570291,11.06
+2023,Computer Science,938,8.31,621711,9.02
+2024,Computer Science,876,-6.61,655380,5.42
+2025,Computer Science,746,-14.84,602109,-8.13
+2019,Engineering,7598,,595142,
+2020,Engineering,7029,-7.49,600396,0.88
+2021,Engineering,6543,-6.91,582733,-2.94
+2022,Engineering,6593,0.76,573841,-1.53
+2023,Engineering,6725,2.0,589277,2.69
+2024,Engineering,6978,3.76,619056,5.05
+2025,Engineering,7418,6.31,664997,7.42

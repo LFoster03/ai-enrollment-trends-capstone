@@ -420,3 +420,96 @@ relying on its output -- a reminder that even a working, verified
 script from one source (ISU/NSC) can silently produce wrong results
 when reused on a source with a different underlying shape (CERP's
 longer, non-2019-starting time range).
+
+## Exploratory Data Analysis
+
+### Overview
+
+`scripts/eda_analysis.py` performs exploratory data analysis on the
+final ISU-vs-National enrollment comparison table
+(`comparison_ISU_vs_National_enrollment.csv`), and saves the results
+as reusable output files rather than one-off, non-reproducible
+analysis. This was added after an initial round of exploratory
+analysis was done informally to answer project discussion questions,
+to bring that same analysis into the project's normal
+script-and-log pattern so it can be regenerated any time the
+underlying cleaned data changes.
+
+Four techniques are used:
+
+- **Descriptive statistics** (mean, standard deviation, min, max) for
+  ISU and National enrollment, per category. This surfaced that ISU
+  and National enrollment differ by roughly three orders of magnitude
+  in raw scale (ISU CS averages ~781 students; National CS averages
+  ~561,458), which is why the indexed comparison technique below is
+  necessary for a meaningful visual comparison.
+- **Year-over-year percent change**, computed separately for ISU and
+  National, to see the rate and direction of change in each year
+  rather than only the overall start-to-end difference.
+- **Correlation analysis** between ISU and National trends, per
+  category, to measure how closely ISU's pattern tracks the national
+  pattern.
+- **Indexed trend visualization** (Fall 2019 = 100), plotting ISU and
+  National enrollment together on a common relative-change scale
+  despite their very different absolute sizes, with a reference line
+  marking ChatGPT's late-2022 launch.
+
+### Usage
+
+```powershell
+python scripts\eda_analysis.py
+```
+
+Run this after `build_comparison_table.py` has produced
+`comparison_ISU_vs_National_enrollment.csv`. No arguments needed.
+
+Output is saved to `data/cleaned/`:
+
+- `eda_descriptive_stats.csv`
+- `eda_yoy_change.csv`
+- `eda_correlations.csv`
+- `eda_trend_comparison.png`
+
+### Formatting issues found and fixed
+
+**Descriptive statistics exported as a messy, unreadable CSV.** The
+first version built descriptive statistics using
+`df.groupby("Category")[["ISU","National"]].describe()`, which returns
+a DataFrame with MultiIndex columns (each statistic nested two levels
+deep under ISU and National separately). Saving that directly to CSV
+produced a broken-looking file: two stacked header rows, a stray
+`Category` row with entirely blank values, and stat names duplicated
+across both ISU and National column groups. **Fix:** the function was
+rewritten to manually build one clean row per (Category, Source) pair
+with flat, single-level column names, rather than relying on pandas'
+default (and CSV-unfriendly) MultiIndex output.
+
+**Percent-change values carried excessive floating-point precision.**
+Year-over-year percent change values were initially saved with 12+
+decimal places (e.g. `19.944598337950147`), which is far more
+precision than the underlying enrollment counts justify and made the
+output harder to read at a glance. **Fix:** both `ISU_pct_change` and
+`National_pct_change` are now rounded to 2 decimal places, consistent
+with the rounding already applied to the descriptive statistics and
+correlation outputs.
+
+### Key findings from this analysis
+
+- ISU's Computer Science enrollment grew every year from 2019 through
+  2023 (peaking at +19.94% year-over-year in 2022), then reversed,
+  falling -6.61% in 2024 and -14.84% in 2025.
+- National Computer Science enrollment kept growing through 2024
+  before slowing and dipping slightly in 2025 (-8.13%) -- the same
+  general reversal ISU shows, but roughly a year behind and
+  considerably less pronounced.
+- Engineering enrollment, both at ISU and nationally, shows close to
+  the opposite pattern: a dip in the earlier years of the dataset
+  followed by a recovery that is still accelerating as of 2025 (ISU:
+  +6.31%; National: +7.42%).
+- Correlation between ISU and National trends is moderate-to-strong
+  for Computer Science (r = 0.850) but weaker for Engineering
+  (r = 0.616), meaning ISU's CS enrollment tracks the national CS
+  pattern fairly closely, while ISU's Engineering enrollment moves
+  somewhat independently of the national Engineering pattern. This is
+  noted as a reason for more caution when generalizing the Engineering
+  findings specifically.
