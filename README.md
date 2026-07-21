@@ -513,3 +513,77 @@ correlation outputs.
   somewhat independently of the national Engineering pattern. This is
   noted as a reason for more caution when generalizing the Engineering
   findings specifically.
+
+## Train/Test Modeling
+
+### Overview
+
+`scripts/train_test_model.py` fits a linear regression model per
+(Category, Source) combination -- ISU Computer Science, National
+Computer Science, ISU Engineering, National Engineering -- trained
+only on years **2019-2023**, with **2024 and 2025 held out entirely**
+as a test set the model never sees during training.
+
+### Why linear regression, and why this train/test split
+
+This project has only 7 data points per series (Fall 2019-2025),
+which is far too small for a complex model -- something like a Random
+Forest or neural network would overfit meaninglessly on this little
+data, producing results that look precise but aren't meaningful.
+Linear regression is used here not as a high-accuracy forecasting
+tool, but as a **diagnostic instrument** for the project's central
+hypothesis: if a model trained only on the pre-2024 trend predicts
+2024-2025 enrollment accurately, that supports a "steady, continuing
+trend" story. If it predicts poorly -- especially in one consistent
+direction -- that is quantitative evidence of a real structural break
+in the trend, rather than just year-to-year noise. The 2024-2025 test
+window was chosen deliberately, since that is the period this
+project's hypothesis identifies as when AI-driven concerns should
+start visibly affecting major choice.
+
+### Usage
+
+```powershell
+python scripts\train_test_model.py
+```
+
+Requires `scikit-learn`, in addition to the packages already used
+elsewhere in this project (`pip install -r requirements.txt` installs
+everything needed). Run this after `build_comparison_table.py` has
+produced `comparison_ISU_vs_National_enrollment.csv`.
+
+Output is saved to `data/cleaned/`:
+
+- `model_train_test_results.csv` -- one row per (Category, Source,
+  Test Year), with actual value, predicted value, error, percent
+  error, training MAE/RMSE, and the fitted model's slope.
+- `model_actual_vs_predicted.png` -- a 2x2 grid of charts, one per
+  (Category, Source) combination, each showing the full actual trend
+  line alongside the model's predicted line and a shaded region
+  marking the held-out test period. Chart generation is built directly
+  into this script and runs automatically every time it is executed,
+  rather than needing to be built as a separate manual step.
+
+### Results
+
+The standout result is **ISU Computer Science**: trained only on the
+strong 2019-2023 growth trend, the model predicted enrollment would
+keep climbing to 1,076 students by 2025. Actual enrollment was only
+746 -- a 44.24% over-prediction, and the largest error of any series
+tested. This is a large, one-directional miss rather than random
+noise, and is the clearest quantitative evidence in this project that
+something genuinely disrupted the prior enrollment trend starting in
+2024.
+
+By contrast, the Engineering models (both ISU and National)
+*under*-predicted 2024-2025 enrollment, since they were trained on a
+declining trend that subsequently reversed into recovery -- the
+opposite direction of miss from Computer Science, consistent with
+Engineering benefiting from the same shift that appears to be working
+against Computer Science enrollment.
+
+National Computer Science showed a smaller, mixed error (-1.41% in
+2024, then +13.48% in 2025) -- directionally similar to the ISU
+pattern but considerably less severe, consistent with the EDA
+finding that ISU's shift is a sharper, more advanced version of a
+national pattern rather than an isolated local anomaly.

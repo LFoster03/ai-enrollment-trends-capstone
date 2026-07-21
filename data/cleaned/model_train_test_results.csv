@@ -1,0 +1,9 @@
+Category,Source,Test_Year,Actual,Predicted,Error,Pct_Error,Train_MAE,Train_RMSE,Model_Slope_per_Year
+Computer Science,ISU,2024,876,999.3,123.3,14.08,226.7,249.1,76.7
+Computer Science,ISU,2025,746,1076.0,330.0,44.24,226.7,249.1,76.7
+Computer Science,National,2024,655380,646113.2,-9266.8,-1.41,45230.4,57785.5,37189.8
+Computer Science,National,2025,602109,683303.0,81194.0,13.48,45230.4,57785.5,37189.8
+Engineering,ISU,2024,6978,6243.0,-735.0,-10.53,1064.1,1113.8,-218.2
+Engineering,ISU,2025,7418,6024.8,-1393.2,-18.78,1064.1,1113.8,-218.2
+Engineering,National,2024,619056,576792.3,-42263.7,-6.83,67148.5,71611.2,-3828.5
+Engineering,National,2025,664997,572963.8,-92033.2,-13.84,67148.5,71611.2,-3828.5
